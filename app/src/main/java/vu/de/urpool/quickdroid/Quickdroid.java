@@ -17,6 +17,8 @@ package vu.de.urpool.quickdroid;
  */
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import vu.de.urpool.quickdroid.apps.AppLauncher;
@@ -45,6 +47,7 @@ import android.gesture.GestureLibrary;
 import android.gesture.GestureOverlayView;
 import android.gesture.Prediction;
 import android.gesture.GestureOverlayView.OnGesturePerformedListener;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -52,6 +55,7 @@ import android.preference.PreferenceManager;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -70,6 +74,8 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.TextView.OnEditorActionListener;
+
+import static android.content.ContentValues.TAG;
 
 public class Quickdroid extends ListActivity implements OnGesturePerformedListener {
 	public static final String LOG_TAG = "Quickdroid";
@@ -679,13 +685,31 @@ public class Quickdroid extends ListActivity implements OnGesturePerformedListen
 	}
 	
 	public static final void activateQuickLaunch(Context context) {
-		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);		
-		Notification notification = new Notification(R.drawable.app_thumbnail, null, 0);
-		Intent quickdroidIntent = new Intent(context, Quickdroid.class);
-		quickdroidIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, quickdroidIntent, 0);
+		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent quickdroidIntent = new Intent(context, Quickdroid.class);
+        quickdroidIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, quickdroidIntent, 0);
+		Notification notification = null;
+		if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			notification = new Notification.Builder(context)
+					.setContentIntent(pendingIntent)
+					.setContentText(context.getText(R.string.appDesc))
+					.setContentTitle(context.getText(R.string.appName))
+					.setTicker(null)
+					.setSmallIcon(R.drawable.app_thumbnail)
+					.setWhen(0)
+					.build();
+		} else {
+			notification = new Notification(R.drawable.app_thumbnail, null, 0);
+			try {
+				Method deprecatedMethod = notification.getClass().getMethod("setLatestEventInfo", Context.class, CharSequence.class, CharSequence.class, PendingIntent.class);
+				deprecatedMethod.invoke(notification, context, context.getText(R.string.appName), context.getText(R.string.appDesc), pendingIntent);
+			} catch (NoSuchMethodException | IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException e) {
+				Log.w(TAG, "Method not found", e);
+			}
+		}
 		notification.flags |= (Notification.FLAG_NO_CLEAR | Notification.FLAG_ONGOING_EVENT);
-		notification.setLatestEventInfo(context, context.getText(R.string.appName), context.getText(R.string.appDesc), pendingIntent);
 		notificationManager.notify(QUICK_LAUNCH_THUMBNAIL_ID, notification);
 	}
 	

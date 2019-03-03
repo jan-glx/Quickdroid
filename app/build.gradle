@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 16
+    compileSdkVersion 28
     buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "vu.de.urpool.quickdroid"
+        targetSdkVersion 28
         minSdkVersion 4
     }
 

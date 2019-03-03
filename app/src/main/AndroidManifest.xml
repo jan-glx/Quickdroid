@@ -16,6 +16,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vu.de.urpool.quickdroid"
     android:versionCode="50"
+    android:targetSdkVersion="28"
     android:versionName="4.4">
     
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
