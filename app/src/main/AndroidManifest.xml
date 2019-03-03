@@ -26,8 +26,7 @@
     <uses-sdk android:targetSdkVersion="11" />
     
     <application android:icon="@drawable/android_with_white_skateboard"
-    	android:label="@string/appName"
-    	android:debuggable="true">
+    	android:label="@string/appName">
         <activity android:name=".Quickdroid"
             android:label="@string/appName"                  
             android:launchMode="singleTask"
