@@ -16,8 +16,6 @@
 <resources>
     <declare-styleable name="quickdroid">
     	<attr name="minValue" format="integer"/>
-    </declare-styleable>
-    <declare-styleable name="quickdroid">
-    	<attr name="maxValue" format="integer"/>
+        <attr name="maxValue" format="integer"/>
     </declare-styleable>
 </resources>
