@@ -88,37 +88,7 @@
 	        android:defaultValue="false"
 	        android:dependency="searchContacts"/>
 	</PreferenceScreen>
-	
-	<PreferenceScreen
-	    android:title="@string/bookmarksSettings"
-	    android:summary="@string/bookmarksSettingsSummary"
-	    android:key="bookmarksSettings">
-	    <CheckBoxPreference android:key="searchBookmarks"
-	        android:title="@string/searchBookmarks"
-	        android:defaultValue="true"/>
-	    <vu.de.urpool.quickdroid.utils.NumberPickerPreference android:key="bookmarksNumSuggestions" 
-            android:title="@string/suggestions"
-            android:summary="@string/maxNumSuggestions"
-            android:singleLine="true"
-            android:defaultValue="4"
-            android:inputType="number"
-            android:dependency="searchBookmarks"
-            android:positiveButtonText="@string/ok"
-            android:negativeButtonText="@string/cancel"
-            quickdroid:minValue="1"
-            quickdroid:maxValue="100"/>
-        <ListPreference
-            android:key="bookmarksPatternMatchingLevel"
-            android:title="@string/patternMatching"
-            android:summary="@string/patternMatchingSummary"
-            android:defaultValue="2"
-            android:entries="@array/patternMatchingLevels"
-            android:entryValues="@array/patternMatchingLevelValues"
-            android:dialogTitle="@string/patternMatchingDialogTitle"
-            android:negativeButtonText="@string/cancel"
-            android:dependency="searchBookmarks"/>
-	</PreferenceScreen>
-	
+
 	<PreferenceScreen
 	    android:title="@string/artistsSettings"
 	    android:summary="@string/artistsSettingsSummary"

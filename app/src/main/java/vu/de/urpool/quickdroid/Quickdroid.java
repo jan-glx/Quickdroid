@@ -22,7 +22,6 @@ import java.util.List;
 import vu.de.urpool.quickdroid.apps.AppLauncher;
 import vu.de.urpool.quickdroid.apps.AppProvider;
 import vu.de.urpool.quickdroid.apps.AppSyncer;
-import vu.de.urpool.quickdroid.browser.BookmarkLauncher;
 import vu.de.urpool.quickdroid.contacts.ContactLauncher;
 import vu.de.urpool.quickdroid.contacts.OldContactLauncher;
 import vu.de.urpool.quickdroid.favoriteitems.FavoriteItemsLauncher;
@@ -449,25 +448,7 @@ public class Quickdroid extends ListActivity implements OnGesturePerformedListen
 	    	}
 			mLaunchers.add(launcherIndex++, contactLauncher);
 		}
-		
-		if (mSettings.getBoolean(Preferences.PREF_SEARCH_BOOKMARKS, Preferences.SEARCH_LAUNCHER)) {
-			BookmarkLauncher bookmarkLauncher = new BookmarkLauncher(this);
-			String strNumSuggestions = mSettings.getString(Preferences.PREF_BOOKMARKS_NUM_SUGGESTIONS,
-				Preferences.DEFAULT_NUM_SUGGESTIONS_4);
-			try {
-	    		int numSuggestions = Integer.parseInt(strNumSuggestions);
-	    		bookmarkLauncher.setMaxSuggestions(numSuggestions);
-	    	} catch (NumberFormatException e) {	
-	    	}
-	    	String strPatternMatchingLevel = mSettings.getString(Preferences.PREF_BOOKMARKS_PATTERN_MATCHING_LEVEL,
-		    	Preferences.DEFAULT_PATTERN_MATCHING_LEVEL);
-	    	try {
-	    		int patternMatchingLevel = Integer.parseInt(strPatternMatchingLevel);
-	    		bookmarkLauncher.setSearchPatternMatchingLevel(patternMatchingLevel);
-	    	} catch (NumberFormatException e) {	
-	    	}
-			mLaunchers.add(launcherIndex++, bookmarkLauncher);
-		}
+
 		
 		boolean defEnableSearchCategory = (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.ECLAIR) ? false : true;
 		
@@ -662,7 +643,6 @@ public class Quickdroid extends ListActivity implements OnGesturePerformedListen
 				editor.putInt("versionCode", 8);
 				editor.remove(Preferences.PREF_APPS_PATTERN_MATCHING_LEVEL);
 				editor.remove(Preferences.PREF_CONTACTS_PATTERN_MATCHING_LEVEL);
-				editor.remove(Preferences.PREF_BOOKMARKS_PATTERN_MATCHING_LEVEL);
 				editor.remove(Preferences.PREF_ARTISTS_PATTERN_MATCHING_LEVEL);
 				editor.remove(Preferences.PREF_ALBUMS_PATTERN_MATCHING_LEVEL);
 				editor.remove(Preferences.PREF_SONGS_PATTERN_MATCHING_LEVEL);

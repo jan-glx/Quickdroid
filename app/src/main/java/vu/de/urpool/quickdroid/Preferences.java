@@ -40,7 +40,6 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 	public static final String PREF_SEARCH_FAVORITE_ITEMS = "searchFavoriteItems";
 	public static final String PREF_SEARCH_APPS = "searchApps";
 	public static final String PREF_SEARCH_CONTACTS = "searchContacts";
-	public static final String PREF_SEARCH_BOOKMARKS = "searchBookmarks";
 	public static final String PREF_SEARCH_ARTISTS = "searchArtists";
 	public static final String PREF_SEARCH_ALBUMS = "searchAlbums";
 	public static final String PREF_SEARCH_SONGS = "searchSongs";
@@ -49,14 +48,12 @@ public class Preferences extends PreferenceActivity implements OnSharedPreferenc
 	public static final String DEFAULT_NUM_SUGGESTIONS_10 = "10";
 	public static final String PREF_APPS_NUM_SUGGESTIONS = "appsNumSuggestions";
 	public static final String PREF_CONTACTS_NUM_SUGGESTIONS = "contactsNumSuggestions";
-	public static final String PREF_BOOKMARKS_NUM_SUGGESTIONS = "bookmarksNumSuggestions";
 	public static final String PREF_ARTISTS_NUM_SUGGESTIONS = "artistsNumSuggestions";
 	public static final String PREF_ALBUMS_NUM_SUGGESTIONS = "albumsNumSuggestions";
 	public static final String PREF_SONGS_NUM_SUGGESTIONS = "songsNumSuggestions";
 	public static final String DEFAULT_PATTERN_MATCHING_LEVEL = "2";
 	public static final String PREF_APPS_PATTERN_MATCHING_LEVEL = "appsPatternMatchingLevel";
 	public static final String PREF_CONTACTS_PATTERN_MATCHING_LEVEL = "contactsPatternMatchingLevel";
-	public static final String PREF_BOOKMARKS_PATTERN_MATCHING_LEVEL = "bookmarksPatternMatchingLevel";
 	public static final String PREF_ARTISTS_PATTERN_MATCHING_LEVEL = "artistsPatternMatchingLevel";
 	public static final String PREF_ALBUMS_PATTERN_MATCHING_LEVEL = "albumsPatternMatchingLevel";
 	public static final String PREF_SONGS_PATTERN_MATCHING_LEVEL = "songsPatternMatchingLevel";

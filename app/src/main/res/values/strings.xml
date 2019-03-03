@@ -15,7 +15,7 @@
 -->
 <resources>
     <string name="appName">Quickdroid</string>
-    <string name="appDesc">Quickly search, find and launch apps, contacts, bookmarks and music</string>
+    <string name="appDesc">Quickly search, find and launch apps, contacts and music</string>
     <string name="appSettings">Settings</string>
     <string name="searchHint">Type to search</string>
     <string name="speakHint">Speak to search</string>
@@ -47,8 +47,6 @@
     <string name="appsSettingsSummary"></string>
     <string name="contactsSettings">Contacts</string>
     <string name="contactsSettingsSummary"></string>
-    <string name="bookmarksSettings">Bookmarks</string>
-    <string name="bookmarksSettingsSummary"></string>
     <string name="artistsSettings">Artists</string>
     <string name="artistsSettingsSummary"></string>
     <string name="albumsSettings">Albums</string>
@@ -57,7 +55,6 @@
     <string name="songsSettingsSummary"></string>
     <string name="searchApps">Search for applications</string>
     <string name="searchContacts">Search for contacts</string>
-    <string name="searchBookmarks">Search for bookmarks</string>
     <string name="searchArtists">Search for artists</string>
     <string name="searchAlbums">Search for albums</string>
     <string name="searchSongs">Search for songs</string>
